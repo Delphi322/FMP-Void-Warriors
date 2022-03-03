@@ -6,19 +6,10 @@ using UnityEngine.UI;
 public class EnemyHUD : MonoBehaviour
 {
 
-    public Text enemyText;
-    public Slider enemyhpSlider;
-
-    public void SetHUD(Unit unit)
+    public void SetHUD(Unit unit, Text enemyNameText, Text enemyHealthText)
     {
-        enemyText.text = unit.unitName;
-        enemyhpSlider.maxValue = unit.maxHP;
-        enemyhpSlider.value = unit.currentHP;
+        enemyNameText.text = unit.unitName;
+        enemyHealthText.text = unit.currentHP.ToString() + "/" + unit.maxHP;
     }
 
-
-    public void SetHP(int hp)
-    {
-        enemyhpSlider.value = hp;
-    }
 }

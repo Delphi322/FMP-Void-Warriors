@@ -43,11 +43,6 @@ public class BattleSystem : MonoBehaviour
         GameObject enemyGO =  Instantiate(enemyPrefab, enemyBattleStation);
         enemyUnit = enemyGO.GetComponent<Unit>();
 
-        GameObject.Find("defend").SetActive(false);
-        GameObject.Find("heal").SetActive(false);
-        GameObject.Find("jump").SetActive(false);
-        GameObject.Find("hurt").SetActive(false);
-
         yield return new WaitForSeconds(2f);
 
         state = BattleState.PLAYERTURN;
@@ -59,8 +54,6 @@ public class BattleSystem : MonoBehaviour
     {
 
         bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
-
-        enemyHUD.SetHP(enemyUnit.currentHP);
 
         yield return new WaitForSeconds(2f);
 
