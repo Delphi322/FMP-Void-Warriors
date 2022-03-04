@@ -9,6 +9,7 @@ public class Unit : MonoBehaviour
     public int damage;
     public int maxHP;
     public int currentHP;
+    public int specialDamage;
 
     public bool TakeDamage(int dmg)
     {
@@ -18,5 +19,12 @@ public class Unit : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    public void Heal(int amount)
+    {
+        currentHP += amount;
+        if (currentHP > maxHP)
+            currentHP = maxHP;
     }
 }

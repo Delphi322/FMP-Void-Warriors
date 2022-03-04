@@ -24,6 +24,8 @@ public class BattleSystem : MonoBehaviour
     public BattleHUD playerHUD;
     public EnemyHUD enemyHUD;
 
+    public bool isDefending;
+
     void Start()
     {
         state = BattleState.START;
@@ -33,6 +35,7 @@ public class BattleSystem : MonoBehaviour
     void Update()
     {
         playerHUD.SetHUD(playerUnit,nameTexts[0],healthTexts[0]);
+        enemyHUD.SetHUD(enemyUnit, nameTexts[1], healthTexts[1]);
     }
 
     IEnumerator SetupBattle()
@@ -43,7 +46,7 @@ public class BattleSystem : MonoBehaviour
         GameObject enemyGO =  Instantiate(enemyPrefab, enemyBattleStation);
         enemyUnit = enemyGO.GetComponent<Unit>();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.000001f);
 
         state = BattleState.PLAYERTURN;
         playerTurn();
@@ -65,16 +68,74 @@ public class BattleSystem : MonoBehaviour
         else
         {
             state = BattleState.ENEMYTURN;
-            EnemyTurn();
+            StartCoroutine(EnemyTurn());
         }
+    }
+
+    IEnumerator SpecialAttack()
+    {
+        bool isDead = enemyUnit.TakeDamage(playerUnit.specialDamage);
+
+        yield return new WaitForSeconds(2f);
+
+        if (isDead)
+        {
+            state = BattleState.WON;
+            
+            EndBattle();
+        }
+        else
+        {
+            state = BattleState.ENEMYTURN;
+            StartCoroutine(EnemyTurn());
+        }
+    }
+
+    IEnumerator HealSpell()
+    {
+        playerUnit.Heal(5);
+
+        yield return new WaitForSeconds(2f);
+        state = BattleState.ENEMYTURN;
+        StartCoroutine(EnemyTurn());
+    }
+
+    IEnumerator ItemUse1()
+    {
+        Debug.Log("Item Gaming");
+        playerUnit.Heal(5);
+        yield return new WaitForSeconds(2f);
+        state = BattleState.ENEMYTURN;
+        StartCoroutine(EnemyTurn());
+        
+    }
+
+    IEnumerator ItemUse2()
+    {
+        Debug.Log("Item Gaming");
+        playerUnit.Heal(2);
+        yield return new WaitForSeconds(2f);
+        state = BattleState.ENEMYTURN;
+        StartCoroutine(EnemyTurn());
+
+    }
+
+    IEnumerator PlayerDefend()
+    {
+        isDefending = true;
+
+        yield return new WaitForSeconds(2f);
+        state = BattleState.ENEMYTURN;
+        StartCoroutine(EnemyTurn());
     }
 
     IEnumerator EnemyTurn()
     {
+        bool isDead = false;
+        if (isDefending) isDead = playerUnit.TakeDamage(enemyUnit.damage / 2);
+        else isDead = playerUnit.TakeDamage(enemyUnit.damage);
 
-        bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
-
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         if (isDead)
         {
@@ -90,12 +151,19 @@ public class BattleSystem : MonoBehaviour
 
     void EndBattle()
     {
-        
+        if(state == BattleState.WON)
+        {
+            Debug.Log("u da winer");
+            playerUnit.unitLevel += 1;
+        }else if(state == BattleState.LOST)
+        {
+            Debug.Log("You smelly loser");
+        }
     }
     
     void playerTurn()
     {
-        GameObject.Find("defend").SetActive(true);
+        playerHUD.Start();
     }
 
     public void onAttackButton()
@@ -105,5 +173,46 @@ public class BattleSystem : MonoBehaviour
         else
             return;
 
+    }
+    public void onSpecialButton()
+    {
+        if (state == BattleState.PLAYERTURN)
+            StartCoroutine(SpecialAttack());
+        else
+            return;
+    }
+
+    public void onHealSpell()
+    {
+        if (state == BattleState.PLAYERTURN)
+            StartCoroutine(HealSpell());
+        else
+            return;
+    }
+
+    public void onItemButton1()
+    {
+
+        if (state == BattleState.PLAYERTURN)
+            StartCoroutine(ItemUse1());
+        else
+            return;
+    }
+
+    public void onItemButton2()
+    {
+
+        if (state == BattleState.PLAYERTURN)
+            StartCoroutine(ItemUse2());
+        else
+            return;
+    }
+
+    public void onDefendButton()
+    {
+        if (state == BattleState.PLAYERTURN)
+            StartCoroutine(PlayerDefend());
+        else
+            return;
     }
 }

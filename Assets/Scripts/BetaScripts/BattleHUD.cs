@@ -7,7 +7,7 @@ public class BattleHUD : MonoBehaviour
 {
     public Button booton;
 
-    private void Start()
+    public void Start()
     {
         booton.Select();
 
@@ -17,5 +17,9 @@ public class BattleHUD : MonoBehaviour
     {
         nameText.text = unit.unitName;
         healthText.text = unit.currentHP.ToString() + "/" + unit.maxHP;
+    }
+    public void SelectButton(Button button)
+    {
+        button.Select();
     }
 }
