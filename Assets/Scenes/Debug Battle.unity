@@ -1410,6 +1410,10 @@ PrefabInstance:
       propertyPath: unitLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6404678137475672009, guid: 076ba0de45972b341ba1234926154095, type: 3}
+      propertyPath: m_Name
+      value: Beast
+      objectReference: {fileID: 0}
     - target: {fileID: 6969248416356764293, guid: 076ba0de45972b341ba1234926154095, type: 3}
       propertyPath: m_Name
       value: Beast
@@ -2929,7 +2933,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mc'Donalds Sprite
+  m_Text: Potion
 --- !u!222 &1620266327
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3165,7 +3169,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: L e a n
+  m_Text: Weaker Potion
 --- !u!222 &1698852689
 CanvasRenderer:
   m_ObjectHideFlags: 0
