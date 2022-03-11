@@ -884,6 +884,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 50080543492315252, guid: 576b2d617eca90e458c0718044dfaa42, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 50080543492315252, guid: 576b2d617eca90e458c0718044dfaa42, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 660510279830297572, guid: 576b2d617eca90e458c0718044dfaa42, type: 3}
       propertyPath: maxHP
       value: 30
@@ -2734,13 +2742,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1463899146}
+      - m_Target: {fileID: 9100000, guid: 8b16dcbe21eb06c40bbb0eb2fddff672, type: 2}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: onDefendButton
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2863,6 +2871,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514415854}
   m_CullTransparentMesh: 1
+--- !u!1 &1539054515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4516524482614152324, guid: 576b2d617eca90e458c0718044dfaa42, type: 3}
+  m_PrefabInstance: {fileID: 895084957}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1539054517
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539054515}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8b16dcbe21eb06c40bbb0eb2fddff672, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1620266324
 GameObject:
   m_ObjectHideFlags: 0

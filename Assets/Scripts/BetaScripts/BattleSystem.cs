@@ -132,9 +132,17 @@ public class BattleSystem : MonoBehaviour
     IEnumerator EnemyTurn()
     {
         bool isDead = false;
-        if (isDefending) isDead = playerUnit.TakeDamage(enemyUnit.damage / 2);
-        else isDead = playerUnit.TakeDamage(enemyUnit.damage);
-
+        int choice = Random.Range(0, 2);
+        switch (choice)
+        {
+            case 0:
+                isDead = Attack(enemyUnit.damage);
+                break;
+            case 1:
+                break;
+        }
+        
+        
         yield return new WaitForSeconds(1f);
 
         if (isDead)
@@ -147,6 +155,13 @@ public class BattleSystem : MonoBehaviour
             state = BattleState.PLAYERTURN;
             playerTurn();
         }
+    }
+    bool Attack(int damage)
+    {
+        bool isDead = false;
+        if (isDefending) isDead = playerUnit.TakeDamage(damage / 2);
+        else isDead = playerUnit.TakeDamage(damage);
+        return isDead;
     }
 
     void EndBattle()
