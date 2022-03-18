@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Collision
+    uniqueID: 4034757363
+    locked: 0
+  - name: Ground
+    uniqueID: 394199945
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Decoration
+    uniqueID: 957249093
     locked: 0
