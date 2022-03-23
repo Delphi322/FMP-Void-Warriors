@@ -15,22 +15,11 @@ public class OldPlayerController : MonoBehaviour
 
     private bool isMoving;
 
-    private static bool playerExists;
-
-
     void Start()
     {
         anim = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
-        if(!playerExists)
-        {
-            playerExists = true;
-            DontDestroyOnLoad(transform.gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        
     }
 
     void Update()

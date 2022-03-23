@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
@@ -10,8 +11,10 @@ public class BattleSystem : MonoBehaviour
     public Text[] healthTexts;
     public Text[] nameTexts;
 
+    public GameObject[] enemyList;
+
     public GameObject playerPrefab;
-    public GameObject enemyPrefab;
+    GameObject enemyPrefab;
 
     public Transform playerBattleStation;
     public Transform enemyBattleStation;
@@ -26,8 +29,12 @@ public class BattleSystem : MonoBehaviour
 
     public bool isDefending;
 
+    int randomEnemy;
+
     void Start()
     {
+        randomEnemy = Random.Range(0, enemyList.Length);
+        enemyPrefab = enemyList[randomEnemy];
         state = BattleState.START;
         StartCoroutine(SetupBattle());
     }
@@ -170,6 +177,7 @@ public class BattleSystem : MonoBehaviour
         {
             Debug.Log("u da winer");
             playerUnit.unitLevel += 1;
+            SceneManager.LoadScene("Debug");
         }else if(state == BattleState.LOST)
         {
             Debug.Log("You smelly loser");
