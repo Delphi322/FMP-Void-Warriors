@@ -49,7 +49,9 @@ MonoBehaviour:
   damage: 7
   maxHP: 15
   currentHP: 15
-  specialDamage: 7
+  maxSP: 0
+  currentSP: 0
+  specialDamage: 15
 --- !u!1 &3153982328842928135
 GameObject:
   m_ObjectHideFlags: 0

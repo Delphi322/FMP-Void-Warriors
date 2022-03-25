@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        randomEncounter = Random.Range(0, 100);
+        randomEncounter = Random.Range(0, 10);
         if (randomEncounter == 5)
             SceneManager.LoadScene("Debug Battle");
         else

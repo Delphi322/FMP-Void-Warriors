@@ -9,6 +9,8 @@ public class Unit : MonoBehaviour
     public int damage;
     public int maxHP;
     public int currentHP;
+    public int maxSP;
+    public int currentSP;
     public int specialDamage;
 
     public bool TakeDamage(int dmg)
@@ -19,6 +21,18 @@ public class Unit : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    public bool UseSP(int cost)
+    {
+
+        if (currentSP < cost)
+        {
+            Debug.Log("Not enough SP");
+            return false;
+        }
+        currentSP -= cost;
+        return true;
     }
 
     public void Heal(int amount)

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: AigisHealthStatus
+  m_Name: Aigis
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStatus
   unitName: Aigis
-  unitLevel: 1
+  unitLevel: 0
   maxHP: 30
   currentHP: 30
   maxSP: 20

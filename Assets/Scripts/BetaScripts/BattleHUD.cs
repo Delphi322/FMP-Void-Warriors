@@ -13,10 +13,11 @@ public class BattleHUD : MonoBehaviour
 
     }
 
-    public void SetHUD(Unit unit, Text nameText, Text healthText)
+    public void SetHUD(Unit unit, Text nameText, Text healthText, Text spText)
     {
         nameText.text = unit.unitName;
         healthText.text = unit.currentHP.ToString() + "/" + unit.maxHP;
+        spText.text = "SP: " + unit.currentSP.ToString() + "/" + unit.maxSP;
     }
     public void SelectButton(Button button)
     {

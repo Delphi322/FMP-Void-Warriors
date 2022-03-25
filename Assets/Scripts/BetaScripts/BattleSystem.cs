@@ -10,6 +10,7 @@ public class BattleSystem : MonoBehaviour
 {
     public Text[] healthTexts;
     public Text[] nameTexts;
+    public Text[] spTexts;
 
     public GameObject[] enemyList;
 
@@ -41,7 +42,7 @@ public class BattleSystem : MonoBehaviour
 
     void Update()
     {
-        playerHUD.SetHUD(playerUnit,nameTexts[0],healthTexts[0]);
+        playerHUD.SetHUD(playerUnit,nameTexts[0],healthTexts[0],spTexts[0]);
         enemyHUD.SetHUD(enemyUnit, nameTexts[1], healthTexts[1]);
     }
 
@@ -81,30 +82,36 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator SpecialAttack()
     {
-        bool isDead = enemyUnit.TakeDamage(playerUnit.specialDamage);
-
-        yield return new WaitForSeconds(2f);
-
-        if (isDead)
+        if (playerUnit.UseSP(5))
         {
-            state = BattleState.WON;
-            
-            EndBattle();
-        }
-        else
-        {
-            state = BattleState.ENEMYTURN;
-            StartCoroutine(EnemyTurn());
+            bool isDead = enemyUnit.TakeDamage(playerUnit.specialDamage);
+
+            yield return new WaitForSeconds(2f);
+
+            if (isDead)
+            {
+                state = BattleState.WON;
+
+                EndBattle();
+            }
+            else
+            {
+                state = BattleState.ENEMYTURN;
+                StartCoroutine(EnemyTurn());
+            }
         }
     }
 
     IEnumerator HealSpell()
     {
-        playerUnit.Heal(5);
+        if (playerUnit.UseSP(3))
+        {
+            playerUnit.Heal(5);
 
-        yield return new WaitForSeconds(2f);
-        state = BattleState.ENEMYTURN;
-        StartCoroutine(EnemyTurn());
+            yield return new WaitForSeconds(2f);
+            state = BattleState.ENEMYTURN;
+            StartCoroutine(EnemyTurn());
+        }
     }
 
     IEnumerator ItemUse1()
@@ -146,6 +153,7 @@ public class BattleSystem : MonoBehaviour
                 isDead = Attack(enemyUnit.damage);
                 break;
             case 1:
+                isDead = SpecialAttack(enemyUnit.specialDamage);
                 break;
         }
         
@@ -169,6 +177,15 @@ public class BattleSystem : MonoBehaviour
         if (isDefending) isDead = playerUnit.TakeDamage(damage / 2);
         else isDead = playerUnit.TakeDamage(damage);
         return isDead;
+    }
+    
+    bool SpecialAttack(int specialDamage)
+    {
+        bool isDead = false;
+        if (isDefending) isDead = playerUnit.TakeDamage(specialDamage / 2);
+        else isDead = playerUnit.TakeDamage(specialDamage);
+        return isDead;
+
     }
 
     void EndBattle()

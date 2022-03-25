@@ -17,7 +17,7 @@ public class LevelLoader : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        LevelLoader.instance.LoadLevel("Debug Battle");
+        LoadLevel("Debug Battle");
     }
 
     public void LoadLevel(string levelName)
