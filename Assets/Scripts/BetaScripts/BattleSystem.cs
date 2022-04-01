@@ -8,6 +8,8 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
 public class BattleSystem : MonoBehaviour
 {
+    public GameObject player;
+
     public Text[] healthTexts;
     public Text[] nameTexts;
     public Text[] spTexts;
@@ -194,8 +196,11 @@ public class BattleSystem : MonoBehaviour
         {
             Debug.Log("u da winer");
             playerUnit.unitLevel += 1;
-            SceneManager.LoadScene("Debug");
-        }else if(state == BattleState.LOST)
+            player = GameManager.Player;
+            player.SetActive(true);
+            SceneManager.UnloadSceneAsync("Debug Battle");
+        }
+        else if(state == BattleState.LOST)
         {
             Debug.Log("You smelly loser");
         }

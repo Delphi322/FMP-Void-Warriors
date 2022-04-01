@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class ae : MonoBehaviour
 {
-    
 
-    void Start()
+    #region Singleton Shit
+    public static ae instance;
+
+    void Awake()
     {
-        
+        if(instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+        DontDestroyOnLoad(instance);
     }
+    #endregion
 
-
-    void Update()
-    {
-        
-    }
 }
