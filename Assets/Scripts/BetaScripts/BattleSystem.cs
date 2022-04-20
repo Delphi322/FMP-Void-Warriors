@@ -8,16 +8,13 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
 public class BattleSystem : MonoBehaviour
 {
-    public GameObject player;
-
+    public GameObject playerPrefab;
+    GameObject enemyPrefab;
+    public GameObject[] enemyList;
     public Text[] healthTexts;
     public Text[] nameTexts;
     public Text[] spTexts;
-
-    public GameObject[] enemyList;
-
-    public GameObject playerPrefab;
-    GameObject enemyPrefab;
+    int randomEnemy;
 
     public Transform playerBattleStation;
     public Transform enemyBattleStation;
@@ -32,7 +29,7 @@ public class BattleSystem : MonoBehaviour
 
     public bool isDefending;
 
-    int randomEnemy;
+    
 
     void Start()
     {
@@ -196,8 +193,8 @@ public class BattleSystem : MonoBehaviour
         {
             Debug.Log("u da winer");
             playerUnit.unitLevel += 1;
-            player = GameManager.Player;
-            player.SetActive(true);
+            playerPrefab = GameManager.PlayerAE;
+            playerPrefab.SetActive(true);
             SceneManager.UnloadSceneAsync("Debug Battle");
         }
         else if(state == BattleState.LOST)
