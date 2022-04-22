@@ -3769,6 +3769,7 @@ MonoBehaviour:
   enemyList:
   - {fileID: 6969248416356764293, guid: 076ba0de45972b341ba1234926154095, type: 3}
   - {fileID: 1410594666018925899, guid: fb3318737e3b4df47bbe4cfbb7dcb414, type: 3}
+  - {fileID: 1785208697787916440, guid: 352a635e72c9c22449d05847fd905ac6, type: 3}
   healthTexts:
   - {fileID: 1255874732}
   - {fileID: 261851024}

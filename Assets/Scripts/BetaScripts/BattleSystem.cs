@@ -29,7 +29,7 @@ public class BattleSystem : MonoBehaviour
 
     public bool isDefending;
 
-    
+   // private Animator anim;
 
     void Start()
     {
@@ -83,10 +83,11 @@ public class BattleSystem : MonoBehaviour
     {
         if (playerUnit.UseSP(5))
         {
+           // anim.SetBool("SpellTrue", true);
             bool isDead = enemyUnit.TakeDamage(playerUnit.specialDamage);
-
+            
             yield return new WaitForSeconds(2f);
-
+           // anim.SetBool("SpellTrue", false);
             if (isDead)
             {
                 state = BattleState.WON;

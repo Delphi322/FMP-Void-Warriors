@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour
 {
-    
+    public Animator transition;
+    public float transitionTime = 0f;
+
     public GameObject player;
 
     public int randomEncounter;
@@ -16,12 +18,21 @@ public class EnemySpawner : MonoBehaviour
         randomEncounter = Random.Range(0, 10);
         if (randomEncounter == 5)
         {
+            StartCoroutine(LoadLevel());
+
             player = GameManager.PlayerAE;
             player.SetActive(false);
+            
             SceneManager.LoadScene("Debug Battle", LoadSceneMode.Additive);
         }
         else
             return;
             
+    }
+    IEnumerator LoadLevel()
+    {
+        yield return new WaitForSeconds(transitionTime);
+
+        transition.SetTrigger("Start");
     }
 }
