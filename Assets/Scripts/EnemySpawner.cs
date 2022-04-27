@@ -5,34 +5,38 @@ using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public Animator transition;
-    public float transitionTime = 0f;
+    //public Animator transition;
+    //public float transitionTime = 10f;
+    public GameObject other;
 
     public GameObject player;
+    public SceneTransition transgender;
 
     public int randomEncounter;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.GetComponent<OldPlayerController>()) return;
         randomEncounter = Random.Range(0, 10);
         if (randomEncounter == 5)
         {
-            StartCoroutine(LoadLevel());
+            transgender.LoadLevel();
+            other.GetComponent<SceneTransition>();
+            //StartCoroutine(LoadLevel());
 
             player = GameManager.PlayerAE;
             player.SetActive(false);
             
-            SceneManager.LoadScene("Debug Battle", LoadSceneMode.Additive);
+            //SceneManager.LoadScene("Debug Battle", LoadSceneMode.Additive);
         }
         else
             return;
             
     }
-    IEnumerator LoadLevel()
-    {
-        yield return new WaitForSeconds(transitionTime);
-
-        transition.SetTrigger("Start");
-    }
+   // IEnumerator LoadLevel()
+  //  {
+   //     yield return new WaitForSeconds(transitionTime);
+//
+   //     transition.SetTrigger("Start");
+   // }
 }
