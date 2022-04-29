@@ -29,10 +29,11 @@ public class BattleSystem : MonoBehaviour
 
     public bool isDefending;
 
-   // private Animator anim;
+    private Animator heckhook;
 
     void Start()
     {
+        
         randomEnemy = Random.Range(0, enemyList.Length);
         enemyPrefab = enemyList[randomEnemy];
         state = BattleState.START;
@@ -49,6 +50,7 @@ public class BattleSystem : MonoBehaviour
     {
         GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
         playerUnit = playerGO.GetComponent<Unit>();
+        heckhook = GameObject.Find("AigisBattle_0").GetComponent<Animator>();
 
         GameObject enemyGO =  Instantiate(enemyPrefab, enemyBattleStation);
         enemyUnit = enemyGO.GetComponent<Unit>();
@@ -83,11 +85,10 @@ public class BattleSystem : MonoBehaviour
     {
         if (playerUnit.UseSP(5))
         {
-           // anim.SetBool("SpellTrue", true);
+            heckhook.SetTrigger("Spell");
             bool isDead = enemyUnit.TakeDamage(playerUnit.specialDamage);
             
             yield return new WaitForSeconds(2f);
-           // anim.SetBool("SpellTrue", false);
             if (isDead)
             {
                 state = BattleState.WON;
@@ -106,6 +107,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (playerUnit.UseSP(3))
         {
+            heckhook.SetTrigger("Spell");
             playerUnit.Heal(5);
 
             yield return new WaitForSeconds(2f);
@@ -116,6 +118,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator ItemUse1()
     {
+        heckhook.SetTrigger("Item");
         Debug.Log("Item Gaming");
         playerUnit.Heal(5);
         yield return new WaitForSeconds(2f);
@@ -126,6 +129,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator ItemUse2()
     {
+        heckhook.SetTrigger("Item");
         Debug.Log("Item Gaming");
         playerUnit.Heal(2);
         yield return new WaitForSeconds(2f);
@@ -137,7 +141,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator PlayerDefend()
     {
         isDefending = true;
-
+        heckhook.SetTrigger("Defend");
         yield return new WaitForSeconds(2f);
         state = BattleState.ENEMYTURN;
         StartCoroutine(EnemyTurn());

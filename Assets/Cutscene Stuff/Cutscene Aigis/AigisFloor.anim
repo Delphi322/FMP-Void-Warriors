@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BattleItemUse
+  m_Name: AigisFloor
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 2193462910587425013, guid: f3e840e573760014d9687f0bbc6194e0, type: 3}
+      value: {fileID: -6392039414733995263, guid: f3e840e573760014d9687f0bbc6194e0, type: 3}
     - time: 1
-      value: {fileID: 2193462910587425013, guid: f3e840e573760014d9687f0bbc6194e0, type: 3}
+      value: {fileID: -6392039414733995263, guid: f3e840e573760014d9687f0bbc6194e0, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -42,8 +42,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 2193462910587425013, guid: f3e840e573760014d9687f0bbc6194e0, type: 3}
-    - {fileID: 2193462910587425013, guid: f3e840e573760014d9687f0bbc6194e0, type: 3}
+    - {fileID: -6392039414733995263, guid: f3e840e573760014d9687f0bbc6194e0, type: 3}
+    - {fileID: -6392039414733995263, guid: f3e840e573760014d9687f0bbc6194e0, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
