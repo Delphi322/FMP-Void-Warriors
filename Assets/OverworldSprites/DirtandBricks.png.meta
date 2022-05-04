@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: 3708334071919326892
     second: DirtandBricks_2
+  - first:
+      213: 7553969390245489945
+    second: DirtandBricks_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -158,6 +161,27 @@ TextureImporter:
       bones: []
       spriteID: ca6ba39d036a67330800000000000000
       internalID: 3708334071919326892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DirtandBricks_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91da1c5432715d860800000000000000
+      internalID: 7553969390245489945
       vertices: []
       indices: 
       edges: []

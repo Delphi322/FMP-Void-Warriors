@@ -30,6 +30,7 @@ public class BattleSystem : MonoBehaviour
     public bool isDefending;
 
     private Animator heckhook;
+    public Animator abilities;
 
     void Start()
     {
@@ -87,7 +88,7 @@ public class BattleSystem : MonoBehaviour
         {
             heckhook.SetTrigger("Spell");
             bool isDead = enemyUnit.TakeDamage(playerUnit.specialDamage);
-            
+            abilities.SetTrigger("Holy");
             yield return new WaitForSeconds(2f);
             if (isDead)
             {
@@ -109,7 +110,7 @@ public class BattleSystem : MonoBehaviour
         {
             heckhook.SetTrigger("Spell");
             playerUnit.Heal(5);
-
+            abilities.SetTrigger("Heal");
             yield return new WaitForSeconds(2f);
             state = BattleState.ENEMYTURN;
             StartCoroutine(EnemyTurn());
