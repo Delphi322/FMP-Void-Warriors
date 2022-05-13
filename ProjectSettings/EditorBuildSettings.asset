@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Debug Battle.unity
     guid: 61df4a48e2aa8224ba68b3a1334f5fcf
   - enabled: 1
+    path: Assets/Scenes/Debug Boss.unity
+    guid: 89d7f814c8ee81f44bd3c17a45210f63
+  - enabled: 1
     path: Assets/Scenes/Intro Cutscene.unity
     guid: c8ad55cd62852fc488fec23e542ab83d
+  - enabled: 1
+    path: Assets/Scenes/Ending Cutscene.unity
+    guid: db9ae15a76daeff439a11026cab8a7fa
   m_configObjects: {}

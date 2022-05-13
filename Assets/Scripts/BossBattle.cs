@@ -9,7 +9,7 @@ public enum BossState { START, PLAYERTURN, BOSSTURN, WON, LOST }
 public class BossBattle : MonoBehaviour
 {
     public GameObject playerPrefab;
-    GameObject bossPrefab;
+    public GameObject bossPrefab;
     public Text[] healthTexts;
     public Text[] nameTexts;
     public Text[] spTexts;
@@ -196,7 +196,7 @@ public class BossBattle : MonoBehaviour
             playerUnit.unitLevel += 1;
             playerPrefab = GameManager.PlayerAE;
             playerPrefab.SetActive(true);
-            SceneManager.LoadScene("End Scene");
+            SceneManager.LoadScene("Ending Cutscene");
         }
         else if(state == BossState.LOST)
         {
