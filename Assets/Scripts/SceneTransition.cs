@@ -11,6 +11,7 @@ public class SceneTransition : MonoBehaviour
     public void Loadnextlevel()
     {
         SceneManager.LoadScene("Debug Battle", LoadSceneMode.Additive);
+        MusicPlayer.PlayGameMusic();
     }
 
     public void LoadLevel()

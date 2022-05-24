@@ -129,9 +129,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Void Beast
   unitLevel: 1
-  damage: 3
+  damage: 7
   maxHP: 20
   currentHP: 20
   maxSP: 0
   currentSP: 0
-  specialDamage: 5
+  specialDamage: 12

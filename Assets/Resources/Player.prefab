@@ -150,12 +150,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Aigis
   unitLevel: 1
-  damage: 7
+  damage: 5
   maxHP: 30
   currentHP: 30
   maxSP: 20
   currentSP: 20
-  specialDamage: 15
+  specialDamage: 10
   prefab: {fileID: 8703873586156133407}
 --- !u!212 &7947077144344792735
 SpriteRenderer:

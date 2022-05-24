@@ -32,9 +32,10 @@ public class BattleSystem : MonoBehaviour
     private Animator heckhook;
     public Animator abilities;
 
+    private SFXManager sfxMan;
     void Start()
     {
-        
+        sfxMan = FindObjectOfType<SFXManager>();
         randomEnemy = Random.Range(0, enemyList.Length);
         enemyPrefab = enemyList[randomEnemy];
         state = BattleState.START;
@@ -89,6 +90,7 @@ public class BattleSystem : MonoBehaviour
             heckhook.SetTrigger("Spell");
             bool isDead = enemyUnit.TakeDamage(playerUnit.specialDamage);
             abilities.SetTrigger("Holy");
+            sfxMan.holySpell.Play();
             yield return new WaitForSeconds(2f);
             if (isDead)
             {
@@ -109,8 +111,9 @@ public class BattleSystem : MonoBehaviour
         if (playerUnit.UseSP(3))
         {
             heckhook.SetTrigger("Spell");
-            playerUnit.Heal(5);
+            playerUnit.Heal(20);
             abilities.SetTrigger("Heal");
+            sfxMan.healSpell.Play();
             yield return new WaitForSeconds(2f);
             state = BattleState.ENEMYTURN;
             StartCoroutine(EnemyTurn());
@@ -121,7 +124,8 @@ public class BattleSystem : MonoBehaviour
     {
         heckhook.SetTrigger("Item");
         Debug.Log("Item Gaming");
-        playerUnit.Heal(5);
+        playerUnit.Heal(15);
+        playerUnit.SPRecover(5);
         yield return new WaitForSeconds(2f);
         state = BattleState.ENEMYTURN;
         StartCoroutine(EnemyTurn());
@@ -132,7 +136,7 @@ public class BattleSystem : MonoBehaviour
     {
         heckhook.SetTrigger("Item");
         Debug.Log("Item Gaming");
-        playerUnit.Heal(2);
+        playerUnit.Heal(10);
         yield return new WaitForSeconds(2f);
         state = BattleState.ENEMYTURN;
         StartCoroutine(EnemyTurn());
@@ -202,6 +206,7 @@ public class BattleSystem : MonoBehaviour
             playerPrefab = GameManager.PlayerAE;
             playerPrefab.SetActive(true);
             SceneManager.UnloadSceneAsync("Debug Battle");
+            MusicPlayer.PlayMenuMusic();
         }
         else if(state == BattleState.LOST)
         {
@@ -263,4 +268,5 @@ public class BattleSystem : MonoBehaviour
         else
             return;
     }
+
 }

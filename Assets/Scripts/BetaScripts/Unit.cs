@@ -41,4 +41,11 @@ public class Unit : MonoBehaviour
         if (currentHP > maxHP)
             currentHP = maxHP;
     }
+
+    public void SPRecover(int amount)
+    {
+        currentSP += amount;
+        if (currentSP > maxSP)
+            currentSP = maxSP;
+    }
 }

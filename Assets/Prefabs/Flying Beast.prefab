@@ -46,12 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Flying Beast
   unitLevel: 1
-  damage: 7
+  damage: 3
   maxHP: 15
   currentHP: 15
   maxSP: 0
   currentSP: 0
-  specialDamage: 15
+  specialDamage: 9
 --- !u!1 &3153982328842928135
 GameObject:
   m_ObjectHideFlags: 0
