@@ -66,16 +66,17 @@ public class BossBattle : MonoBehaviour
 
         bool isDead = bossUnit.TakeDamage(playerUnit.damage);
 
-        yield return new WaitForSeconds(2f);
 
         if (isDead)
         {
             state = BossState.WON;
+            yield return new WaitForSeconds(2f);
             EndBattle();
         }
         else
         {
             state = BossState.BOSSTURN;
+            yield return new WaitForSeconds(2f);
             StartCoroutine(BossTurn());
         }
     }
@@ -88,16 +89,16 @@ public class BossBattle : MonoBehaviour
             bool isDead = bossUnit.TakeDamage(playerUnit.specialDamage);
             abilities.SetTrigger("Holy");
             sfxMan.holySpell.Play();
-            yield return new WaitForSeconds(2f);
             if (isDead)
             {
                 state = BossState.WON;
-
+                yield return new WaitForSeconds(2f);
                 EndBattle();
             }
             else
             {
                 state = BossState.BOSSTURN;
+                yield return new WaitForSeconds(2f);
                 StartCoroutine(BossTurn());
             }
         }
@@ -111,8 +112,8 @@ public class BossBattle : MonoBehaviour
             playerUnit.Heal(20);
             abilities.SetTrigger("Heal");
             sfxMan.healSpell.Play();
-            yield return new WaitForSeconds(2f);
             state = BossState.BOSSTURN;
+            yield return new WaitForSeconds(2f);
             StartCoroutine(BossTurn());
         }
     }
@@ -123,8 +124,8 @@ public class BossBattle : MonoBehaviour
         Debug.Log("Item Gaming");
         playerUnit.Heal(15);
         playerUnit.SPRecover(5);
-        yield return new WaitForSeconds(2f);
         state = BossState.BOSSTURN;
+        yield return new WaitForSeconds(2f);
         StartCoroutine(BossTurn());
         
     }
@@ -134,8 +135,8 @@ public class BossBattle : MonoBehaviour
         heckhook.SetTrigger("Item");
         Debug.Log("Item Gaming");
         playerUnit.Heal(10);
-        yield return new WaitForSeconds(2f);
         state = BossState.BOSSTURN;
+        yield return new WaitForSeconds(2f);
         StartCoroutine(BossTurn());
 
     }
@@ -144,8 +145,8 @@ public class BossBattle : MonoBehaviour
     {
         isDefending = true;
         heckhook.SetTrigger("Defend");
-        yield return new WaitForSeconds(2f);
         state = BossState.BOSSTURN;
+        yield return new WaitForSeconds(2f);
         StartCoroutine(BossTurn());
     }
 
@@ -164,7 +165,7 @@ public class BossBattle : MonoBehaviour
         }
         
         
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         if (isDead)
         {
@@ -174,6 +175,7 @@ public class BossBattle : MonoBehaviour
         else
         {
             state = BossState.PLAYERTURN;
+            yield return new WaitForSeconds(2f);
             playerTurn();
         }
     }
@@ -198,15 +200,15 @@ public class BossBattle : MonoBehaviour
     {
         if(state == BossState.WON)
         {
+            System.Threading.Thread.Sleep(3000);
             Debug.Log("u da winer");
-            playerUnit.unitLevel += 1;
-            playerPrefab = GameManager.PlayerAE;
-            playerPrefab.SetActive(true);
             SceneManager.LoadScene("Ending Cutscene");
         }
         else if(state == BossState.LOST)
         {
             Debug.Log("You smelly loser");
+            System.Threading.Thread.Sleep(3000);
+            Application.Quit();
         }
     }
     

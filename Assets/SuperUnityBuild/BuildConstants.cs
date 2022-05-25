@@ -5,23 +5,24 @@ public static class BuildConstants
     public enum ReleaseType
     {
         None,
-        NewReleaseType,
+        UAL,
     }
 
     public enum Platform
     {
         None,
         PC,
-        macOS,
         Linux,
+        macOS,
     }
 
     public enum Architecture
     {
         None,
         Windows_x86,
-        macOS,
+        Windows_x64,
         Linux_x64,
+        macOS,
     }
 
     public enum Distribution
@@ -29,11 +30,11 @@ public static class BuildConstants
         None,
     }
 
-    public static readonly System.DateTime buildDate = new System.DateTime(637889280909512703);
-    public const string version = "1.0.0.1";
-    public const ReleaseType releaseType = ReleaseType.NewReleaseType;
-    public const Platform platform = Platform.Linux;
-    public const Architecture architecture = Architecture.Linux_x64;
+    public static readonly System.DateTime buildDate = new System.DateTime(637890687671449067);
+    public const string version = "1.0.0.5";
+    public const ReleaseType releaseType = ReleaseType.UAL;
+    public const Platform platform = Platform.PC;
+    public const Architecture architecture = Architecture.Windows_x86;
     public const Distribution distribution = Distribution.None;
 }
 

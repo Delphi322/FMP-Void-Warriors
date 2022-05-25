@@ -47,8 +47,8 @@ MonoBehaviour:
   unitName: Snake Beast
   unitLevel: 10
   damage: 7
-  maxHP: 66
-  currentHP: 66
+  maxHP: 50
+  currentHP: 50
   maxSP: 0
   currentSP: 0
   specialDamage: 13

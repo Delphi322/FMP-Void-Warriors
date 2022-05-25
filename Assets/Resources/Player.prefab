@@ -149,10 +149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: Aigis
-  unitLevel: 1
-  damage: 5
-  maxHP: 30
-  currentHP: 30
+  unitLevel: 3
+  damage: 7
+  maxHP: 35
+  currentHP: 35
   maxSP: 20
   currentSP: 20
   specialDamage: 10

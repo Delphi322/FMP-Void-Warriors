@@ -19,11 +19,18 @@ public class OldPlayerController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
-        
+
     }
 
     void Update()
-    {      
+    {
+
+        if (Input.GetKeyDown("escape"))
+        {
+            Debug.Log("2B is hot");
+            Application.Quit();
+        }
+
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         isMoving = false;
 
